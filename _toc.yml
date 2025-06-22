@@ -1,0 +1,34 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: chapters/intro
+options:
+  numbered: 3
+chapters:
+- file: chapters/01/customization
+  title: Customization
+- file: chapters/10/elution_range
+  title: Elution Range
+- file: chapters/11/spectral_range
+  title: Spetral Range
+- file: chapters/12/flowchange
+  title: Flow Change Detection
+- file: chapters/20/mapping
+  title: Mapping between UV and X-ray
+- file: chapters/80/about_data_sets
+  title: About Example Data Sets
+  sections:
+  - file: chapters/80/trimming
+    title: Trimming
+  - file: chapters/80/generation
+    title: Generation
+  - file: chapters/80/local_settings
+    title: Local Settings
+- file: chapters/81/animation
+  title: Animation
+  sections:
+  - file: chapters/81/simple_animation
+    title: Simple Animation
+  - file: chapters/81/sec_simulation
+    title: SEC Simulation
