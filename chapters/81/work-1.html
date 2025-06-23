@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -188,15 +188,16 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../12/flowchange.html">6. Flow Change Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/mapping.html">7. Mapping between UV and X-ray</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/data_survey.html">8. Data Survey</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">9. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">9.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">9.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">9.3. Local Settings</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="simple_animation.html">9.1. Simple Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec_simulation.html">9.2. SEC Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="animation.html">10. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="simple_animation.html">10.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec_simulation.html">10.2. SEC Simulation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -650,42 +651,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgacc1fad705be41d1bfe109c5d9c2bc44">
+  <img id="_anim_img5d05859daa2e4d66a3480a440fad3a3a">
   <div class="anim-controls">
-    <input id="_anim_slideracc1fad705be41d1bfe109c5d9c2bc44" type="range" class="anim-slider"
+    <input id="_anim_slider5d05859daa2e4d66a3480a440fad3a3a" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animacc1fad705be41d1bfe109c5d9c2bc44.set_frame(parseInt(this.value));">
+           oninput="anim5d05859daa2e4d66a3480a440fad3a3a.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animacc1fad705be41d1bfe109c5d9c2bc44.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim5d05859daa2e4d66a3480a440fad3a3a.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectacc1fad705be41d1bfe109c5d9c2bc44"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select5d05859daa2e4d66a3480a440fad3a3a"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_acc1fad705be41d1bfe109c5d9c2bc44"
+      <input type="radio" name="state" value="once" id="_anim_radio1_5d05859daa2e4d66a3480a440fad3a3a"
              checked>
-      <label for="_anim_radio1_acc1fad705be41d1bfe109c5d9c2bc44">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_acc1fad705be41d1bfe109c5d9c2bc44"
+      <label for="_anim_radio1_5d05859daa2e4d66a3480a440fad3a3a">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_5d05859daa2e4d66a3480a440fad3a3a"
              >
-      <label for="_anim_radio2_acc1fad705be41d1bfe109c5d9c2bc44">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_acc1fad705be41d1bfe109c5d9c2bc44"
+      <label for="_anim_radio2_5d05859daa2e4d66a3480a440fad3a3a">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_5d05859daa2e4d66a3480a440fad3a3a"
              >
-      <label for="_anim_radio3_acc1fad705be41d1bfe109c5d9c2bc44">Reflect</label>
+      <label for="_anim_radio3_5d05859daa2e4d66a3480a440fad3a3a">Reflect</label>
     </form>
   </div>
 </div>
@@ -695,9 +696,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgacc1fad705be41d1bfe109c5d9c2bc44";
-    var slider_id = "_anim_slideracc1fad705be41d1bfe109c5d9c2bc44";
-    var loop_select_id = "_anim_loop_selectacc1fad705be41d1bfe109c5d9c2bc44";
+    var img_id = "_anim_img5d05859daa2e4d66a3480a440fad3a3a";
+    var slider_id = "_anim_slider5d05859daa2e4d66a3480a440fad3a3a";
+    var loop_select_id = "_anim_loop_select5d05859daa2e4d66a3480a440fad3a3a";
     var frames = new Array(50);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -7805,7 +7806,7 @@ AIkRgAAAiRGAAACJEYAAAIkRgAAAiRGAAACJEYAAAIn5f+75Oo2bmExEAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animacc1fad705be41d1bfe109c5d9c2bc44 = new Animation(frames, img_id, slider_id, 200.0,
+        anim5d05859daa2e4d66a3480a440fad3a3a = new Animation(frames, img_id, slider_id, 200.0,
                                  loop_select_id);
     }, 0);
   })()
