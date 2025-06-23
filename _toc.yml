@@ -11,10 +11,12 @@ chapters:
 - file: chapters/10/elution_range
   title: Elution Range
 - file: chapters/11/spectral_range
-  title: Spetral Range
+  title: Spectral Range
 - file: chapters/12/flowchange
   title: Flow Change Detection
-- file: chapters/20/mapping
+- file: chapters/20/baselines
+  title: Baseline Models
+- file: chapters/30/mapping
   title: Mapping between UV and X-ray
 - file: chapters/70/data_survey
   title: Data Survey
