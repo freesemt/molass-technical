@@ -16,6 +16,8 @@ chapters:
   title: Flow Change Detection
 - file: chapters/20/mapping
   title: Mapping between UV and X-ray
+- file: chapters/70/data_survey
+  title: Data Survey
 - file: chapters/80/about_data_sets
   title: About Example Data Sets
   sections:
