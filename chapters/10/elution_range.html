@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Elution Range" href="../11/spectral_range.html" />
+    <link rel="next" title="3. Spectral Range" href="../11/spectral_range.html" />
     <link rel="prev" title="1. Customization" href="../01/customization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,21 +183,20 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01/customization.html">1. Customization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Elution Range</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../11/spectral_range.html">4. Elution Range</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../12/flowchange.html">6. Flow Change Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/mapping.html">7. Mapping between UV and X-ray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../70/data_survey.html">8. Data Survey</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">9. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">9.1. Trimming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">9.2. Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">9.3. Local Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11/spectral_range.html">3. Spectral Range</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/flowchange.html">4. Flow Change Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20/baselines.html">5. Baseline Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30/mapping.html">6. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/data_survey.html">7. Data Survey</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">10. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">10.1. Simple Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">10.2. SEC Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">9.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">9.2. SEC Simulation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -395,16 +394,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Elution Range</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3. Overview of the Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.1. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.1.1. Trimming by Moment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">2.1. Overview of the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">2.2. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">2.2.1. Trimming by Moment</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -417,9 +412,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="elution-range">
 <h1><span class="section-number">2. </span>Elution Range<a class="headerlink" href="#elution-range" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="overview-of-the-data">
-<h1><span class="section-number">3. </span>Overview of the Data<a class="headerlink" href="#overview-of-the-data" title="Link to this heading">#</a></h1>
+<section id="overview-of-the-data">
+<h2><span class="section-number">2.1. </span>Overview of the Data<a class="headerlink" href="#overview-of-the-data" title="Link to this heading">#</a></h2>
 <p>The data set used here for explanation looks like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,10 +432,11 @@ document.write(`
 <img alt="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" src="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" />
 </div>
 </div>
+</section>
 <section id="trimming-in-elution-axis">
-<h2><span class="section-number">3.1. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
 <section id="trimming-by-moment">
-<h3><span class="section-number">3.1.1. </span>Trimming by Moment<a class="headerlink" href="#trimming-by-moment" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>Trimming by Moment<a class="headerlink" href="#trimming-by-moment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Stats</span> <span class="kn">import</span> <span class="n">Moment</span>
@@ -527,7 +522,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Elution Range</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Spectral Range</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -547,16 +542,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Elution Range</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3. Overview of the Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.1. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.1.1. Trimming by Moment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">2.1. Overview of the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">2.2. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">2.2.1. Trimming by Moment</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
