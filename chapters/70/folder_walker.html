@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -411,18 +411,18 @@ document.write(`
 <h1><span class="section-number">9.1. </span>Folder Walker<a class="headerlink" href="#folder-walker" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-legacy&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
-<span class="kn">from</span> <span class="nn">molass.DataUtils.FolderWalker</span> <span class="kn">import</span> <span class="n">walk_folders</span>
-<span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.Local</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_local_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataUtils.FolderWalker</span><span class="w"> </span><span class="kn">import</span> <span class="n">walk_folders</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.Global.Options</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_molass_options</span>
 <span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 <span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
 <span class="n">DATA_ROOT_FOLDER</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;DATA_ROOT_FOLDER&#39;</span><span class="p">]</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;figs&quot;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_folder</span><span class="p">):</span>
@@ -449,24 +449,25 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] C:\Users\takahashi\PyTools\Data\00_model_001
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:128: RuntimeWarning: invalid value encountered in scalar divide
-  check_ratio = np.average(agy[safe_f-w:safe_f])/agy[f]
-C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\KekLib\GeometryUtils.py:19: RuntimeWarning: divide by zero encountered in divide
-  wy_ = wy/(np.max(wy) - np.min(wy))
-C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\KekLib\GeometryUtils.py:13: RuntimeWarning: invalid value encountered in subtract
-  wy_ = wy - cy
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
+    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 140, in get_limit_impl
+    if not is_limit or fmin &lt; safe_f:
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable &#39;is_limit&#39; where it is not associated with a value
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] C:\Users\takahashi\PyTools\Data\00_model_005
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:128: RuntimeWarning: invalid value encountered in scalar divide
-  check_ratio = np.average(agy[safe_f-w:safe_f])/agy[f]
-C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\KekLib\GeometryUtils.py:19: RuntimeWarning: divide by zero encountered in divide
-  wy_ = wy/(np.max(wy) - np.min(wy))
-C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\KekLib\GeometryUtils.py:13: RuntimeWarning: invalid value encountered in subtract
-  wy_ = wy - cy
-Rg=None &lt; 10.0 has been replaced by 10.0 to avoid exception.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
+    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 140, in get_limit_impl
+    if not is_limit or fmin &lt; safe_f:
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable &#39;is_limit&#39; where it is not associated with a value
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2] C:\Users\takahashi\PyTools\Data\20160227\backsub
@@ -478,12 +479,8 @@ Rg=None &lt; 10.0 has been replaced by 10.0 to avoid exception.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3] C:\Users\takahashi\PyTools\Data\20160628
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10730: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10744: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10750: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\takahashi\GitHub\molass-technical\chapters\70\../../../molass-library\molass\Mapping\PeakMatcher.py:22: SmallSampleWarning: One or more sample arguments is too small; all returned values will be NaN. See documentation for sample size requirements.
+  slope, intercept, r_value, p_value, std_err = linregress(x, y)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4] C:\Users\takahashi\PyTools\Data\20161006\OA01\Backsub

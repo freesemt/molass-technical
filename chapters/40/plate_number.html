@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -411,10 +411,10 @@ document.write(`
 <h1><span class="section-number">7.3. </span>Plate Number Constraints<a class="headerlink" href="#plate-number-constraints" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.1&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.1 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE2</span>
 <span class="n">ssd2</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
 <span class="n">trimmed_ssd2</span> <span class="o">=</span> <span class="n">ssd2</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd2</span> <span class="o">=</span> <span class="n">trimmed_ssd2</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -430,7 +430,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9dc478d4c267312705f350ec14e177f351ecad2564bee42e3d33cf2f48317446.png" src="../../_images/9dc478d4c267312705f350ec14e177f351ecad2564bee42e3d33cf2f48317446.png" />
+<img alt="../../_images/a4c26b497b08bc58100e3b2b7f3145bbd60787de43d26b8a11d7b7f2347a6cfc.png" src="../../_images/a4c26b497b08bc58100e3b2b7f3145bbd60787de43d26b8a11d7b7f2347a6cfc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -444,20 +444,20 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N=120.0, main_peak=1, main_params=[7.64648137e-02 4.34096037e+02 1.68583674e+01 0.00000000e+00]
 </pre></div>
 </div>
-<img alt="../../_images/9a872fc22036095c495866cb5b70e0c3b6ea75222bf387a7cb95456834340e69.png" src="../../_images/9a872fc22036095c495866cb5b70e0c3b6ea75222bf387a7cb95456834340e69.png" />
-<img alt="../../_images/eb37deaf21ed428d36eef5274cecb446a3889eef3e73901590b01ea0875dbf1b.png" src="../../_images/eb37deaf21ed428d36eef5274cecb446a3889eef3e73901590b01ea0875dbf1b.png" />
+<img alt="../../_images/c5bd3d89f53eb22d2bcf29ca14f4f7455ee1ecc6585cc67310564c0c34d4c4ad.png" src="../../_images/c5bd3d89f53eb22d2bcf29ca14f4f7455ee1ecc6585cc67310564c0c34d4c4ad.png" />
+<img alt="../../_images/2c4132165306a4be3e7bc3a9ebd830f998da70da08439eb8ceefac1aea97ae95.png" src="../../_images/2c4132165306a4be3e7bc3a9ebd830f998da70da08439eb8ceefac1aea97ae95.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N=120.0, main_peak=1, main_params=[9.24476040e-02 4.33898671e+02 1.79680320e+01 4.15631337e+00]
 </pre></div>
 </div>
-<img alt="../../_images/50420f189207f741ee144ede82b906d2346cb3083e4490187081ef7702b9416f.png" src="../../_images/50420f189207f741ee144ede82b906d2346cb3083e4490187081ef7702b9416f.png" />
-<img alt="../../_images/a3e708b42ae431c49b6825c9ea10fe5664a2caec839364a7ba42190c842007c4.png" src="../../_images/a3e708b42ae431c49b6825c9ea10fe5664a2caec839364a7ba42190c842007c4.png" />
+<img alt="../../_images/c7195bfa90cb4ff9ecab0c7d273d8400d37e9735e2cf5fc38036c66a28063308.png" src="../../_images/c7195bfa90cb4ff9ecab0c7d273d8400d37e9735e2cf5fc38036c66a28063308.png" />
+<img alt="../../_images/20d212f58205da5cad0d90ee6aee6178e8dd01155a727931b734518927b1d9a1.png" src="../../_images/20d212f58205da5cad0d90ee6aee6178e8dd01155a727931b734518927b1d9a1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>consistent_uv= True
 adjust_components_consistently entry: mapping= MappingInfo(slope=1.01, intercept=-1.53, xr_peaks=..., uv_peaks=..., xr_moment=..., uv_moment=...)
 </pre></div>
 </div>
-<img alt="../../_images/2e8ff3637d750a057cef39bfe13417f846b832b94a8b9f0c602d61a85dd087c1.png" src="../../_images/2e8ff3637d750a057cef39bfe13417f846b832b94a8b9f0c602d61a85dd087c1.png" />
-<img alt="../../_images/1765639997b11e130d03d04d95f86d217e180fc03b2653f35f87291fcb04a2fa.png" src="../../_images/1765639997b11e130d03d04d95f86d217e180fc03b2653f35f87291fcb04a2fa.png" />
-<img alt="../../_images/c9c4bab256b9bc898fcdc64b03a8a17f8748a18667a9c5e98fd03b413bfdb8a2.png" src="../../_images/c9c4bab256b9bc898fcdc64b03a8a17f8748a18667a9c5e98fd03b413bfdb8a2.png" />
+<img alt="../../_images/609214363c73f3bfe9a28111a10a915e45fbdf6a1cc89f336ddece86ab2e499b.png" src="../../_images/609214363c73f3bfe9a28111a10a915e45fbdf6a1cc89f336ddece86ab2e499b.png" />
+<img alt="../../_images/1b401c5a943c9e0fc507c290ad1b4671a7e8fd7b28ab5770cd2c693ebca86202.png" src="../../_images/1b401c5a943c9e0fc507c290ad1b4671a7e8fd7b28ab5770cd2c693ebca86202.png" />
+<img alt="../../_images/b18e015dd8f0d3d773d95f0fcc2dbec5563f5c3fc4be2bf8b57d29024a5c0afc.png" src="../../_images/b18e015dd8f0d3d773d95f0fcc2dbec5563f5c3fc4be2bf8b57d29024a5c0afc.png" />
 </div>
 </div>
 </section>

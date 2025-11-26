@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -405,7 +405,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1. Stochastic Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.1. Stochastic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1.1. Stochastic Dispersive Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.2. Kinetic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.2.1. Equilibrium Dispersive Model</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -419,19 +426,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-elution-models">
 <h1><span class="section-number">8. </span>Advanced Elution Models<a class="headerlink" href="#advanced-elution-models" title="Link to this heading">#</a></h1>
+<section id="stochastic-models">
+<h2><span class="section-number">8.1. </span>Stochastic Models<a class="headerlink" href="#stochastic-models" title="Link to this heading">#</a></h2>
 <section id="stochastic-dispersive-model">
-<h2><span class="section-number">8.1. </span>Stochastic Dispersive Model<a class="headerlink" href="#stochastic-dispersive-model" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.1.1. </span>Stochastic Dispersive Model<a class="headerlink" href="#stochastic-dispersive-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_legacy</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_legacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.4&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_legacy version 0.2.4 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.3.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_data version 0.3.0 or higher.&quot;</span>
 
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE4</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -441,7 +450,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/166ad6d6d514593abdd22be840b03ab56374ffc4497cbbef6aa8993252f4834f.png" src="../../_images/166ad6d6d514593abdd22be840b03ab56374ffc4497cbbef6aa8993252f4834f.png" />
+<img alt="../../_images/9d6d5837efbda72d488bc5e6afcb72ed6897a826bce1af2b0805b16ecd9e432a.png" src="../../_images/9d6d5837efbda72d488bc5e6afcb72ed6897a826bce1af2b0805b16ecd9e432a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -452,9 +461,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7415ae6810baf22f08746d7e3a29acd80680b562c0e7ce8b58482d0b333c4858.png" src="../../_images/7415ae6810baf22f08746d7e3a29acd80680b562c0e7ce8b58482d0b333c4858.png" />
+<img alt="../../_images/80aa885cca6d54bfe9651f7ee91b055fb2865a9df3cd1addc52a1d879a1f987a.png" src="../../_images/80aa885cca6d54bfe9651f7ee91b055fb2865a9df3cd1addc52a1d879a1f987a.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="kinetic-models">
+<h2><span class="section-number">8.2. </span>Kinetic Models<a class="headerlink" href="#kinetic-models" title="Link to this heading">#</a></h2>
+<section id="equilibrium-dispersive-model">
+<h3><span class="section-number">8.2.1. </span>Equilibrium Dispersive Model<a class="headerlink" href="#equilibrium-dispersive-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;EDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -469,11 +484,11 @@ guess_init_params: M2= 134.61576060205115
 area ratio= 0.35559694660498437
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
   W = np.sqrt(np.pi*tau/RPe)
-C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
   Y = xi/(2*np.sqrt(tau/RPe))
-C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
   numer = U*(expB - 1)*np.exp(-V)
 </pre></div>
 </div>
@@ -481,9 +496,10 @@ C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140:
 area ratio= 0.3521629344551637
 </pre></div>
 </div>
-<img alt="../../_images/106efb698a9d9e57a6bb6cf3327a890b0982ea78d2f6c375e30d1355dc779555.png" src="../../_images/106efb698a9d9e57a6bb6cf3327a890b0982ea78d2f6c375e30d1355dc779555.png" />
+<img alt="../../_images/e48761db1fc2c18c6c0f03a23d24dc6798eb32d24218fc75b36613b977b2164d.png" src="../../_images/e48761db1fc2c18c6c0f03a23d24dc6798eb32d24218fc75b36613b977b2164d.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -551,7 +567,14 @@ area ratio= 0.3521629344551637
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1. Stochastic Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.1. Stochastic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1.1. Stochastic Dispersive Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.2. Kinetic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.2.1. Equilibrium Dispersive Model</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,8 +409,8 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.Local</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_local_settings</span>
 <span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
 <span class="n">ORIGINAL_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;ORIGINAL_DATA&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ORIGINAL_DATA</span><span class="p">)</span>
@@ -427,8 +427,8 @@ document.write(`
 <h1><span class="section-number">10.1. </span>Trimming<a class="headerlink" href="#trimming" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass.Global.Options</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_molass_options</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">original_data_folder</span> <span class="o">=</span> <span class="n">ORIGINAL_DATA</span>
 <span class="n">ssd0</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">original_data_folder</span><span class="p">)</span>
@@ -438,8 +438,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7d517b26b88f7c149d2ff4d03173ff20edcc172873f570b316e167bdf4837b3e.png" src="../../_images/7d517b26b88f7c149d2ff4d03173ff20edcc172873f570b316e167bdf4837b3e.png" />
-<img alt="../../_images/4f81f3cefd104074a99ce6b770ae2d8d3493aeb80961a244e736c1285342bec7.png" src="../../_images/4f81f3cefd104074a99ce6b770ae2d8d3493aeb80961a244e736c1285342bec7.png" />
+<img alt="../../_images/d3246492cfc6cc6a79bc578f452bddfe49a974a5771596f3b9e9209413fccc02.png" src="../../_images/d3246492cfc6cc6a79bc578f452bddfe49a974a5771596f3b9e9209413fccc02.png" />
+<img alt="../../_images/e638d39ea43d8ed08b75d88b2b6a0845d838a836f5b2219a84be3e9c5724f1ec.png" src="../../_images/e638d39ea43d8ed08b75d88b2b6a0845d838a836f5b2219a84be3e9c5724f1ec.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -449,21 +449,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((slice(30, 751, None), slice(0, 354, None)),
- (slice(63, None, None), slice(0, 709, None)))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((slice(30, np.int64(751), None), slice(67, 354, None)),
+ (slice(63, None, None), slice(135, 709, None)))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
-<span class="kn">import</span> <span class="nn">molass.DataUtils.UvFileTrimming</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">reload</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">molass.DataUtils.UvFileTrimming</span>
 <span class="n">reload</span><span class="p">(</span><span class="n">molass</span><span class="o">.</span><span class="n">DataUtils</span><span class="o">.</span><span class="n">UvFileTrimming</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">molass.DataUtils.UvFileTrimming</span> <span class="kn">import</span> <span class="n">trim_uvfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataUtils.UvFileTrimming</span><span class="w"> </span><span class="kn">import</span> <span class="n">trim_uvfile</span>
 
 <span class="c1"># Define the temporary directory name</span>
 <span class="n">temp_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="s2">&quot;tutorial_data&quot;</span><span class="p">)</span>
@@ -495,11 +495,11 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">molass.DataUtils.ZipFolder</span> <span class="kn">import</span> <span class="n">zip_folder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataUtils.ZipFolder</span><span class="w"> </span><span class="kn">import</span> <span class="n">zip_folder</span>
 
-<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
 <span class="n">xr_islice</span> <span class="o">=</span> <span class="n">plot_result0</span><span class="o">.</span><span class="n">trimming</span><span class="o">.</span><span class="n">xr_slices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">xr_islice</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">xr_islice</span><span class="o">.</span><span class="n">stop</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
@@ -536,8 +536,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0432ecb62465bcb9bc7079735f1e65e237301a90f13371195ebfcda4a90bbe7c.png" src="../../_images/0432ecb62465bcb9bc7079735f1e65e237301a90f13371195ebfcda4a90bbe7c.png" />
-<img alt="../../_images/8a6b8b7ab7989170844a1fc971a8d2e8fd12f0eeb76f92e2d0ac40e1a13a5cf3.png" src="../../_images/8a6b8b7ab7989170844a1fc971a8d2e8fd12f0eeb76f92e2d0ac40e1a13a5cf3.png" />
+<img alt="../../_images/5d974eeb99ae34f1672c44e5cb246b8ea9fc851c9a96ce7dcb475f3922b9b828.png" src="../../_images/5d974eeb99ae34f1672c44e5cb246b8ea9fc851c9a96ce7dcb475f3922b9b828.png" />
+<img alt="../../_images/4714d0904b144fe2a99e9c1d9bfaf788384f900be76ef8b1ea4a69b7b82c19ac.png" src="../../_images/4714d0904b144fe2a99e9c1d9bfaf788384f900be76ef8b1ea4a69b7b82c19ac.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -549,11 +549,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x202fee1cce0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x22b76aebe30&gt;
 </pre></div>
 </div>
-<img alt="../../_images/0d6adfb07e3acbec7937c3f8d0a7bd5bcd51bdd5869814d4bbdd6ee2498e24f6.png" src="../../_images/0d6adfb07e3acbec7937c3f8d0a7bd5bcd51bdd5869814d4bbdd6ee2498e24f6.png" />
-<img alt="../../_images/3f016d20a8f3c3308943300522ed7186546d20b33c45682b2a2366e63e668f2e.png" src="../../_images/3f016d20a8f3c3308943300522ed7186546d20b33c45682b2a2366e63e668f2e.png" />
+<img alt="../../_images/3341d9d4188178c891531adcfb41c43361c45cc2c832bee36aa54e6dcc5d747b.png" src="../../_images/3341d9d4188178c891531adcfb41c43361c45cc2c832bee36aa54e6dcc5d747b.png" />
+<img alt="../../_images/bcc2cce9c9b0eadca448e5ec62b1432a8ffda4e2dbfaa41034c85d57d506c2ab.png" src="../../_images/bcc2cce9c9b0eadca448e5ec62b1432a8ffda4e2dbfaa41034c85d57d506c2ab.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -565,11 +565,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python313\Lib\site-packages\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
   logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<img alt="../../_images/ae31e40e205375f7d18da52d66bd8454e821f016aa00c2607ac6f710c4680238.png" src="../../_images/ae31e40e205375f7d18da52d66bd8454e821f016aa00c2607ac6f710c4680238.png" />
+<img alt="../../_images/d2327ddd53803fd549c3174d2bcec69b20e4e09e65aea5271fb29312db7fe28a.png" src="../../_images/d2327ddd53803fd549c3174d2bcec69b20e4e09e65aea5271fb29312db7fe28a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -580,9 +580,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [5.39084558e-02 1.84603595e+02 1.12014356e+01 2.63242400e+00]
-[1] [3.24981427e-03 2.15604286e+02 1.12014590e+01 2.89884113e-03]
-[2] [ 2.80593003e-02  3.08844949e+02  1.12036131e+01 -9.50185654e-04]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [4.82429220e-02 1.15175557e+02 1.04098695e+01 4.46646480e+00]
+[1] [ 1.18487582e-02  1.30900681e+02  1.04098695e+01 -1.76886830e-03]
+[2] [ 2.73431106e-02  2.41337808e+02  1.10085056e+01 -4.20560775e-03]
 </pre></div>
 </div>
 </div>
@@ -595,9 +595,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [8.66883372e-02 3.69187706e+02 2.24939397e+01 5.28624981e+00]
-[1] [2.51728191e-02 4.31441127e+02 2.24939867e+01 5.82125008e-03]
-[2] [ 1.16057562e-01  6.18680508e+02  2.24983125e+01 -1.90809639e-03]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [6.97357518e-02 2.29311891e+02 2.09043722e+01 8.96924233e+00]
+[1] [ 3.49438631e-02  2.60889985e+02  2.09043721e+01 -3.55211764e-03]
+[2] [ 1.16629085e-01  4.82662103e+02  2.21065113e+01 -8.44540744e-03]
 </pre></div>
 </div>
 </div>

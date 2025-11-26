@@ -1,20 +1,30 @@
 Traceback (most recent call last):
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "C:\Program Files\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 1314, in execute
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python312\Lib\asyncio\base_events.py", line 691, in run_until_complete
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
     return future.result()
-           ^^^^^^^^^^^^^^^
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 709, in async_execute
+           ~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Program Files\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\takahashi\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "C:\Program Files\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -31,20 +41,20 @@ y_hist_large
 ------------------
 
 
-Traceback [1;36m(most recent call last)[0m:
+Traceback [36m(most recent call last)[39m:
 
-[0m  File [0;32mC:\Program Files\Python312\Lib\site-packages\IPython\core\interactiveshell.py:3577[0m in [0;35mrun_code[0m
-    exec(code_obj, self.user_global_ns, self.user_ns)[0m
+  File [92mC:\Program Files\Python313\Lib\site-packages\IPython\core\interactiveshell.py:3699[39m in [95mrun_code[39m
+    exec(code_obj, self.user_global_ns, self.user_ns)
 
-[0m  Cell [0;32mIn[2], line 9[0m
-    y_hist_large = from_space_separated_list_string(y_hist_large_str.strip())[0m
+  Cell [92mIn[2][39m[92m, line 9[39m
+    y_hist_large = from_space_separated_list_string(y_hist_large_str.strip())
 
-[1;36m  File [1;32mC:\Program Files\Python312\Lib\site-packages\molass_legacy\KekLib\NumpyArrayUtils.py:27[1;36m in [1;35mfrom_space_separated_list_string[1;36m
-[1;33m    return np.array(eval(list_str))[1;36m
+[36m  [39m[36mFile [39m[32mC:\Program Files\Python313\Lib\site-packages\molass_legacy\KekLib\NumpyArrayUtils.py:27[39m[36m in [39m[35mfrom_space_separated_list_string[39m
+[31m    [39m[31mreturn np.array(eval(list_str))[39m
 
-[1;36m  File [1;32m<string>:1[1;36m[0m
-[1;33m    0,0   0,0   0,0   0,0   0,0   0,0   0,0   0,0   0,0[0m
-[1;37m          ^[0m
-[1;31mSyntaxError[0m[1;31m:[0m invalid syntax
+  [36mFile [39m[32m<string>:1[39m
+[31m    [39m[31m0,0   0,0   0,0   0,0   0,0   0,0   0,0   0,0   0,0[39m
+          ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
 
 
