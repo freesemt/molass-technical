@@ -12,10 +12,13 @@ exclude_patterns: ["README.md"]
 execute:
   execute_notebooks: force
   exclude_patterns: [
-                    "proportional.ipynb",
+                    "correction_survey.ipynb",
+                    "trimming_survey.ipynb",
                     "sec_simulation.ipynb",
                     "data_survey.ipynb",
+                    "proportional.ipynb",       # includes rgcurve fitting that produces many progress bars
                     "robustness_survey.ipynb",
+                    "individual_sdm.ipynb",
                     "robustness_testing.ipynb",
                     "integral_baseline_survey.ipynb",
                     "peak-performance.ipynb"
