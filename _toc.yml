@@ -52,3 +52,12 @@ chapters:
     title: Simple Animation
   - file: chapters/81/sec_simulation
     title: SEC Simulation
+- file: chapters/90/related_packages
+  title: Related Packages
+  sections:
+  - file: chapters/90/peak-performance
+    title: PeakPerformance
+  - file: chapters/90/cadet-core
+    title: CADET Core
+  - file: chapters/90/hplc-py
+    title: hplc-py

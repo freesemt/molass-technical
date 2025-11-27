@@ -15,8 +15,10 @@ execute:
                     "proportional.ipynb",
                     "sec_simulation.ipynb",
                     "data_survey.ipynb",
+                    "robustness_survey.ipynb",
                     "robustness_testing.ipynb",
                     "integral_baseline_survey.ipynb",
+                    "peak-performance.ipynb"
                     ]
 
 # Define the name of the latex output file for PDF builds

@@ -11,6 +11,9 @@ As you proceed, you may also find the following resources helpful:
 * [Molass Library Reference](https://biosaxs-dev.github.io/molass-library/) on function reference for coding,
 * [Molass Library Repository](https://github.com/biosaxs-dev/molass-library) on source code for implementation.
 
+To join the community, see also:
+* [Molass Developer's Handbook](https://biosaxs-dev.github.io/molass-develop) for maintenance, for developers.
+
 ## Acknowledgements
 
 Parts of this tutorial were created with the assistance of [GitHub Copilot](https://github.com/features/copilot).

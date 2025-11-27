@@ -18,4 +18,6 @@ local_settings.py
 # Ignore the run_denss results
 **/temp/**
 
+*.csv
+*.npy
 *.xlsx
