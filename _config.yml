@@ -16,12 +16,13 @@ execute:
                     "trimming_survey.ipynb",
                     "sec_simulation.ipynb",
                     "data_survey.ipynb",
-                    "proportional.ipynb",       # includes rgcurve fitting that produces many progress bars
+                    "proportional.ipynb",       # includes tqdm progress bars
                     "robustness_survey.ipynb",
                     "individual_sdm.ipynb",
                     "robustness_testing.ipynb",
                     "integral_baseline_survey.ipynb",
-                    "peak-performance.ipynb"
+                    "peak-performance.ipynb",
+                    "hplc-py.ipynb",            # includes tqdm progress bars
                     ]
 
 # Define the name of the latex output file for PDF builds
