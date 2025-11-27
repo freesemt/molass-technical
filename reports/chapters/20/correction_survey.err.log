@@ -51,6 +51,6 @@ Here is a preview of the cell contents:
 -------------------
 ['import sys', "sys.path.insert(0, '../../../molass-library')", "sys.path.insert(0, '../../../molass-legacy')", 'import os', 'import matplotlib.pyplot as plt']
 ...
-['    reuslt.close()', '', '    if k > 3:', '        # break  # Uncomment to stop after processing a few files', '        pass']
+['    reuslt.savefig(os.path.join(output_folder, f"correction_{k:03d}.png"))', '    reuslt.close()', '', '    if k > 3:', '        break  # Uncomment to stop after processing a few files']
 -------------------
 

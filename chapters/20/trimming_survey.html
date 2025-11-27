@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -208,6 +208,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">11. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">11.1. Simple Animation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">11.2. SEC Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../90/related_packages.html">12. Related Packages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../90/peak-performance.html">12.1. PeakPerformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/cadet-core.html">12.2. CADET Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/hplc-py.html">12.3. hplc-py</a></li>
 </ul>
 </details></li>
 </ul>
@@ -456,94 +462,7 @@ document.write(`
     <span class="n">reuslt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># break  # Uncomment to stop after processing a few files</span>
-        <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[205] C:\Users\takahashi\PyTools\Data\20210519\Sample_CirAve
-Skipping ill-formated data.
-[206] C:\Users\takahashi\PyTools\Data\20210527\SiRNA_Backsub_20210501
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[207] C:\Users\takahashi\PyTools\Data\20210628
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[208] C:\Users\takahashi\PyTools\Data\20210628_2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[209] C:\Users\takahashi\PyTools\Data\20210727\data01
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skipping ill-formated data.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">continue</span>
-<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">remove_bubbles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="k">if</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No UV data found in </span><span class="si">%s</span><span class="s2">, skipping.&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataObjects\SecSaxsData.py:110,</span> in <span class="ni">SecSaxsData.__init__</span><span class="nt">(self, folder, object_list, uv_only, xr_only, trimmed, remove_bubbles, beamline_info, mapping, time_initialized, datafiles, debug)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Folder </span><span class="si">{</span><span class="n">folder</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataUtils.XrLoader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_xr_with_options</span>
-<span class="ne">--&gt; </span><span class="mi">110</span> <span class="n">xr_array</span><span class="p">,</span> <span class="n">datafiles</span> <span class="o">=</span> <span class="n">load_xr_with_options</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">remove_bubbles</span><span class="o">=</span><span class="n">remove_bubbles</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">xrM</span> <span class="o">=</span> <span class="n">xr_array</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="n">xrE</span> <span class="o">=</span> <span class="n">xr_array</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataUtils\XrLoader.py:111,</span> in <span class="ni">load_xr_with_options</span><span class="nt">(folder_path, remove_bubbles, logger, debug)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_xr_with_options</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">remove_bubbles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Load X-ray scattering data from a folder with options to preprocess.</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)    109         List of data file paths corresponding to the loaded data.</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>     <span class="n">xr_array</span><span class="p">,</span> <span class="n">datafiles</span> <span class="o">=</span> <span class="n">load_xr</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="k">if</span> <span class="n">remove_bubbles</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="n">xr_remove_bubbles</span><span class="p">(</span><span class="n">xr_array</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataUtils\XrLoader.py:33,</span> in <span class="ni">load_xr</span><span class="nt">(folder_path)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">folder_path</span> <span class="o">+</span> <span class="s2">&quot;/*.dat&quot;</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">33</span>         <span class="n">input_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>         <span class="n">datafiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_npyio_impl.py:1397,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1394</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1395</span>     <span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1397</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">_read</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1398</span>             <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1399</span>             <span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1400</span>             <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quotechar</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="k">return</span> <span class="n">arr</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_npyio_impl.py:1024,</span> in <span class="ni">_read</span><span class="nt">(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1024</span>     <span class="n">fh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">_datasource</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1025</span>     <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1026</span>         <span class="n">encoding</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_datasource.py:192,</span> in <span class="ni">open</span><span class="nt">(path, mode, destpath, encoding, newline)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="sd"> Open `path` with `mode` and return the file object.</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span><span class="sd"> </span>
-<span class="sd">   (...)    188 </span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">(</span><span class="n">destpath</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">192</span> <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_datasource.py:526,</span> in <span class="ni">DataSource.open</span><span class="nt">(self, path, mode, encoding, newline)</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span>     <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;bz2&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>         <span class="n">mode</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">526</span>     <span class="k">return</span> <span class="n">_file_openers</span><span class="p">[</span><span class="n">ext</span><span class="p">](</span><span class="n">found</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span>                               <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+        <span class="k">break</span>  <span class="c1"># Uncomment to stop after processing a few files</span>
 </pre></div>
 </div>
 </div>

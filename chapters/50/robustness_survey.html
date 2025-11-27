@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -208,6 +208,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">11. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">11.1. Simple Animation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">11.2. SEC Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../90/related_packages.html">12. Related Packages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../90/peak-performance.html">12.1. PeakPerformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/cadet-core.html">12.2. CADET Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/hplc-py.html">12.3. hplc-py</a></li>
 </ul>
 </details></li>
 </ul>
@@ -440,7 +446,15 @@ document.write(`
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_folder</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">)</span>
 
+<span class="n">NUM_COMPONENTS_SPEC</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">5</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">41</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">walk_folders</span><span class="p">(</span><span class="n">DATA_ROOT_FOLDER</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="c1"># OA_Ald_Fer-stain</span>
+        <span class="k">continue</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
     <span class="c1"># if k &lt; 28:</span>
     <span class="c1"># if k &lt; 42:</span>
@@ -474,7 +488,9 @@ document.write(`
     <span class="n">reuslt</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">reuslt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">_corrected.png&quot;</span><span class="p">))</span>
     <span class="n">reuslt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="n">num_components</span> <span class="o">=</span> <span class="n">NUM_COMPONENTS_SPEC</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">)</span>
     <span class="n">result1</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
     <span class="n">result1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">_egh.png&quot;</span><span class="p">))</span>
     <span class="n">result1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -500,8 +516,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 1.4771641928010542
-guess_init_params: M2= 67.4205953980038
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 67.4205953980038
 area ratio= 0.35961264615905414
 guess_init_params: M2= 70.40065188827805
 area ratio= 0.35083080125937005
@@ -542,14 +557,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
   slope, intercept, r_value, p_value, std_err = linregress(x, y)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 1.2418972920138738
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 59.709080889629355
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 59.709080889629355
 area ratio= 0.35043844112528716
 guess_init_params: M2= 165.2956598959891
 area ratio= 0.35804258979207
@@ -573,14 +581,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\m
   slope, intercept, r_value, p_value, std_err = linregress(x, y)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 1.1199413185867597
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 1 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 42.004245050595216
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 42.004245050595216
 area ratio= 0.350551261710276
 guess_init_params: M2= 41.78079525907471
 area ratio= 0.3553921643664331
@@ -597,19 +598,10 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5] C:\Users\takahashi\PyTools\Data\20161104\BL-10C\Ald
-area= 0.6102249259024266
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
-  logy = np.log(pv[slice_])
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 4.279235953662101
-area ratio= 0.3473657961173078
-guess_init_params: M2= 129.9822533492731
-area ratio= 0.34681655139175055
-guess_init_params: M2= 110.15644818362684
-area ratio= 0.21307650957886104
+guess_init_params: M2= 134.5820448444856
+area ratio= 0.3456950376879176
+guess_init_params: M2= 133.36287147725352
+area ratio= 0.21876126460287199
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
@@ -627,14 +619,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
   logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.7290414949606947
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 39.317043185719974
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 39.317043185719974
 area ratio= 0.35024470057803536
 guess_init_params: M2= 217.60679644789465
 area ratio= 0.35195879450737266
@@ -651,17 +636,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 134.99422822717463
 area ratio= 0.16859410936796287
 [7] C:\Users\takahashi\PyTools\Data\20161104\BL-10C\OA_Ald
-area= 0.6279231233816454
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-SimpleGuinier aborted due to 0 &lt;= 32
-c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
-  logy = np.log(pv[slice_])
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 guess_init_params: M2= 176.14788863856404
 area ratio= 0.3536247372851621
 guess_init_params: M2= 150.3999586424052
@@ -684,7 +658,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.45555434588806043
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 guess_init_params: M2= 2.7290590219911004
 area ratio= 0.34617759909384027
 guess_init_params: M2= 142.51398022121666
@@ -711,14 +685,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\m
   logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.4998488028230568
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 112.56987895976965
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 112.56987895976965
 area ratio= 0.3507765088445878
 guess_init_params: M2= 104.97946764393679
 area ratio= 0.2641470461512236
@@ -738,13 +705,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.31309510652842687
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
-  logy = np.log(pv[slice_])
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 91.21118698958789
@@ -767,16 +727,11 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.21489977115104142
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 29.836874756422574
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 29.836874756422574
 area ratio= 0.34589404606119994
 guess_init_params: M2= 250.85880538965688
 area ratio= 0.2343919489071013
@@ -793,9 +748,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12] C:\Users\takahashi\PyTools\Data\20161113\SUB_TRN1
-area= 5.93027090396234
-make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 guess_init_params: M2= 202.67104236043636
 area ratio= 0.3574416026961948
 </pre></div>
@@ -831,9 +783,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13] C:\Users\takahashi\PyTools\Data\20161113\SUB_TRN1DBB
-area= 7.77184214875135
-make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 guess_init_params: M2= 125.41865115739259
 area ratio= 0.39213960406547155
 guess_init_params: M2= 168.66429623017817
@@ -863,7 +812,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14] C:\Users\takahashi\PyTools\Data\20161113\SUB_TRN1PY
-area= 11.70253068319558
 guess_init_params: M2= 8.771204573616837
 area ratio= 0.35055574941553674
 guess_init_params: M2= 294.5438818132911
@@ -881,7 +829,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[15] C:\Users\takahashi\PyTools\Data\20161113\SUB_TRN1_2
-area= 10.539566846698575
 guess_init_params: M2= 208.40316548506658
 area ratio= 0.35505285906397516
 </pre></div>
@@ -959,8 +906,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\m
   logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.2048618522908917
-guess_init_params: M2= 225.69452122981568
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 225.69452122981568
 area ratio= 0.35085160202351207
 guess_init_params: M2= 147.28960470792262
 area ratio= 0.16894327620421987
@@ -982,9 +928,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.2626541897681541
-make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 243.25129596680173
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 243.25129596680173
 area ratio= 0.35028118826548965
 guess_init_params: M2= 243.85786110874068
 area ratio= 0.31353444918732054
@@ -1001,8 +945,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18] C:\Users\takahashi\PyTools\Data\20161124\Backsub1
-area= 0.4967666214574989
-make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
@@ -1026,14 +968,13 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[19] C:\Users\takahashi\PyTools\Data\20161202
-area= 1.2413721780478966
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 135.25497734639262
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 135.25497734639262
 area ratio= 0.354373339925185
 guess_init_params: M2= 130.23903893424722
 area ratio= 0.35043875370625294
@@ -1053,9 +994,10 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+SimpleGuinier aborted due to 0 &lt;= 32
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.8669782259557446
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
 guess_init_params: M2= 15.506716386423248
 area ratio= 0.33312490207009976
 guess_init_params: M2= 168.8394673509317
@@ -1073,7 +1015,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[21] C:\Users\takahashi\PyTools\Data\20161216\Backsub
-area= 2.3006754755714027
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
@@ -1097,7 +1038,6 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22] C:\Users\takahashi\PyTools\Data\20161216\Backsub_101_120
-area= 0.4384405184579946
 guess_init_params: M2= 204.68307966990398
 area ratio= 0.3500778288869158
 guess_init_params: M2= 429.76497483455114
@@ -1118,11 +1058,11 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.3810735536031557
-make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 133.64175538216793
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 133.64175538216793
 area ratio= 0.35449161682323516
 guess_init_params: M2= 162.29411226056973
 area ratio= 0.35034719328113334
@@ -1144,16 +1084,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 4.4827594723934725
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
-SimpleGuinier aborted due to 0 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 1: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 80.59579237317274
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 80.59579237317274
 area ratio= 0.37869457226078707
 </pre></div>
 </div>
@@ -1199,16 +1130,7 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 4.260561314908237
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 3 &lt;= 32
-SimpleGuinier aborted due to 2 &lt;= 32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
-guess_init_params: M2= 83.87196062630518
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 83.87196062630518
 area ratio= 0.3776399914536451
 </pre></div>
 </div>
@@ -1254,14 +1176,8 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.39779201219005567
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
-  logy = np.log(pv[slice_])
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 129.25082500261757
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+guess_init_params: M2= 129.25082500261757
 area ratio= 0.35442436814617806
 guess_init_params: M2= 167.81166120674408
 area ratio= 0.35036375655554336
@@ -1277,98 +1193,690 @@ c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\mo
   numer = U*(expB - 1)*np.exp(-V)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27] C:\Users\takahashi\PyTools\Data\20170209\OA_Ald_Fer-stain
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[28] C:\Users\takahashi\PyTools\Data\20170209_2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1305: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1334: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 86.98172730445116
+area ratio= 0.3779118272542712
+guess_init_params: M2= 85.06933018994536
+area ratio= 0.3510875990770387
+guess_init_params: M2= 82.63046169958056
+area ratio= 0.3596350757240041
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[29] C:\Users\takahashi\PyTools\Data\20170226\Sugiyama
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bubbles have been removed at [287 288 289 290]
+zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exclude_bubble_impl:  287 290
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1305: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1334: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 186.91469073579512
+area ratio= 0.3504155051611483
+guess_init_params: M2= 219.3734193690381
+area ratio= 0.3389922208835063
+guess_init_params: M2= 219.46170320969205
+area ratio= 0.2574704449958036
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in multiply
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[30] C:\Users\takahashi\PyTools\Data\20170301\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1305: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1334: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 239.4877446905502
+area ratio= 0.35047636578230457
+guess_init_params: M2= 239.55658083322677
+area ratio= 0.3507726586387095
+guess_init_params: M2= 241.1241312495111
+area ratio= 0.3436798893715064
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[31] C:\Users\takahashi\PyTools\Data\20170304\Backsub_166_195
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1305: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1334: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+Failed to estimate mapping for matching peaks.  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 252, in estimate_mapping_impl
+    return estimate_mapping_for_matching_peaks(xr_curve, xr_peaks, uv_curve, uv_peaks, debug=debug)
+  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 195, in estimate_mapping_for_matching_peaks
+    return estimate_mapping_for_matching_peaks(xr_curve_, xr_peaks, uv_curve_, uv_peaks, retry=False, debug=debug)
+  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 192, in estimate_mapping_for_matching_peaks
+    assert retry, &quot;Mapping coverage is not acceptable after retry.&quot;
+           ^^^^^
+AssertionError: Mapping coverage is not acceptable after retry.
+
+Failed to estimate mapping for matching peaks.  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 252, in estimate_mapping_impl
+    return estimate_mapping_for_matching_peaks(xr_curve, xr_peaks, uv_curve, uv_peaks, debug=debug)
+  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 195, in estimate_mapping_for_matching_peaks
+    return estimate_mapping_for_matching_peaks(xr_curve_, xr_peaks, uv_curve_, uv_peaks, retry=False, debug=debug)
+  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Mapping\SimpleMapper.py&quot;, line 192, in estimate_mapping_for_matching_peaks
+    assert retry, &quot;Mapping coverage is not acceptable after retry.&quot;
+           ^^^^^
+AssertionError: Mapping coverage is not acceptable after retry.
+
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+SimpleGuinier aborted due to 0 &lt;= 32
+SimpleGuinier aborted due to 0 &lt;= 32
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+guess_init_params: M2= 148.5354312887993
+area ratio= 0.3508105541720237
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 124.65644968956128
+area ratio= 0.30365310989192784
+guess_init_params: M2= 124.7946294187425
+area ratio= 0.3030782281528397
+[32] C:\Users\takahashi\PyTools\Data\20170304\CirAve
+No UV data found in C:\Users\takahashi\PyTools\Data\20170304\CirAve, skipping.
+[33] C:\Users\takahashi\PyTools\Data\20170307\Backsub
+guess_init_params: M2= 172.7796159827705
+area ratio= 0.3526714086647586
+guess_init_params: M2= 284.21260469034587
+area ratio= 0.35177195037779874
+guess_init_params: M2= 283.6572319178256
+area ratio= 0.34582851608437615
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34] C:\Users\takahashi\PyTools\Data\20170309\Backsub
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+guess_init_params: M2= 16.369583170286038
+area ratio= 0.35002980638680725
+guess_init_params: M2= 129.65471142453288
+area ratio= 0.32062077041820186
+guess_init_params: M2= 122.92060136630506
+area ratio= 0.20082834766865806
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[35] C:\Users\takahashi\PyTools\Data\20170426
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 122.99517593053244
+area ratio= 0.34989853497518686
+guess_init_params: M2= 123.0109433112394
+area ratio= 0.34953414040370123
+guess_init_params: M2= 9.710657877346273
+area ratio= 0.08115322850659337
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 3: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+[36] C:\Users\takahashi\PyTools\Data\20170506\ACTM002\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 15.006879270045397
+area ratio= 0.3502110290702079
+guess_init_params: M2= 15.061852160087465
+area ratio= 0.3501290019125915
+guess_init_params: M2= 164.32322903839858
+area ratio= 0.2783518279895295
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[37] C:\Users\takahashi\PyTools\Data\20170506\ACTM002\Backsub2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 47.75175910434057
+area ratio= 0.35023555130285505
+guess_init_params: M2= 66.22122558442747
+area ratio= 0.35011202927586826
+guess_init_params: M2= 124.80050838547197
+area ratio= 0.2714116999882573
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[38] C:\Users\takahashi\PyTools\Data\20170511
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 254.24657925943657
+area ratio= 0.3504205932791849
+guess_init_params: M2= 303.05484940518664
+area ratio= 0.35113234278768685
+guess_init_params: M2= 422.2307515546761
+area ratio= 0.327250323724823
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[39] C:\Users\takahashi\PyTools\Data\20170512\Backsub
+guess_init_params: M2= 7.818632435716391
+area ratio= 0.3500801748734753
+guess_init_params: M2= 208.07760239493592
+area ratio= 0.35456909906385226
+guess_init_params: M2= 320.6098943707757
+area ratio= 0.34514890107540236
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[40] C:\Users\takahashi\PyTools\Data\20171112\Backsub_272_281_monoM
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 13.30217063580059
+area ratio= 0.3500946850855776
+guess_init_params: M2= 403.217718770632
+area ratio= 0.3553945861873159
+guess_init_params: M2= 371.4547419333354
+area ratio= 0.3503078809495345
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[41] C:\Users\takahashi\PyTools\Data\20171112\Backsub_ComMR
+guess_init_params: M2= 393.67218364790386
+area ratio= 0.3541254156019811
+guess_init_params: M2= 330.3840658807332
+area ratio= 0.3481212515106441
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[42] C:\Users\takahashi\PyTools\Data\20171112\Backsub_monoE
+guess_init_params: M2= 31.277176018714005
+area ratio= 0.3501484923428366
+guess_init_params: M2= 217.59560793714925
+area ratio= 0.3510188857996052
+guess_init_params: M2= 217.59229589227937
+area ratio= 0.347779351269446
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43] C:\Users\takahashi\PyTools\Data\20171118\Factin
+guess_init_params: M2= 45.78901564850673
+area ratio= 0.35146568536464184
+guess_init_params: M2= 340.70119612513884
+area ratio= 0.35107370022666023
+guess_init_params: M2= 664.4975524447557
+area ratio= 0.35188609241743224
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[44] C:\Users\takahashi\PyTools\Data\20171118\Gactin
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\GuinierAnalyzer\SimpleGuinier.py&quot;, line 138, in __init__
+    self.make_smooth_line()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File &quot;c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\GuinierAnalyzer\SimpleGuinier.py&quot;, line 183, in make_smooth_line
+    gr_fwd = np.gradient( head_y[m:m+FWD_NUM_HEAD_DROPS] )
+  File &quot;c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py&quot;, line 1289, in gradient
+    raise ValueError(
+        &quot;Shape of array too small to calculate a numerical gradient, &quot;
+        &quot;at least (edge_order + 1) elements are required.&quot;)
+ValueError: Shape of array too small to calculate a numerical gradient, at least (edge_order + 1) elements are required.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+guess_init_params: M2= 14.750517492702475
+area ratio= 0.35127305777422346
+guess_init_params: M2= 197.86108179199823
+area ratio= 0.3510077233398551
+guess_init_params: M2= 197.86344836737678
+area ratio= 0.35249823748508113
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[45] C:\Users\takahashi\PyTools\Data\20171203
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+SimpleGuinier aborted due to 15 &lt;= 32
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+guess_init_params: M2= 602.1168188563399
+area ratio= 0.3511724232201477
+guess_init_params: M2= 633.1380258736622
+area ratio= 0.3631600717244137
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 911.971142915931
+area ratio= 0.3337295217259528
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[46] C:\Users\takahashi\PyTools\Data\20171226\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1305: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:1334: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 300.24570242513187
+area ratio= 0.3508425696726872
+guess_init_params: M2= 349.794207428119
+area ratio= 0.34829322165830234
+guess_init_params: M2= 3783.4441584772
+area ratio= 0.34841439826773724
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[47] C:\Users\takahashi\PyTools\Data\20180204\Close01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 128.25968268258225
+area ratio= 0.3506142492797999
+guess_init_params: M2= 128.33776675031595
+area ratio= 0.3503292255114858
+guess_init_params: M2= 432.967225224876
+area ratio= 0.3518159973086154
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[48] C:\Users\takahashi\PyTools\Data\20180204\Open01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\PlotUtils\DecompositionPlot.py:88: RuntimeWarning: invalid value encountered in log
+  logy = np.log(pv[slice_])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 330.17364274529587
+area ratio= 0.350552574546327
+guess_init_params: M2= 330.17258992230194
+area ratio= 0.3465439312227511
+guess_init_params: M2= 310.621820163211
+area ratio= 0.23006478361644908
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[49] C:\Users\takahashi\PyTools\Data\20180204\TSsome2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 233.7290927860385
+area ratio= 0.35234583853571527
+guess_init_params: M2= 233.74299354186033
+area ratio= 0.3500735996632138
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 233.72909877752696
+area ratio= 0.350582560688345
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in multiply
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[50] C:\Users\takahashi\PyTools\Data\20180206
+guess_init_params: M2= 63.92081657711239
+area ratio= 0.3534520800287871
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+  W = np.sqrt(np.pi*tau/RPe)
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+  Y = xi/(2*np.sqrt(tau/RPe))
+c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-legacy\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+  numer = U*(expB - 1)*np.exp(-V)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guess_init_params: M2= 72.43336998861797
+area ratio= 0.35625059731686237
+guess_init_params: M2= 72.43336998186457
+area ratio= 0.305979060676579
+[51] C:\Users\takahashi\PyTools\Data\20180206_TG
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_guinier_plot: Error processing component 2: &#39;SimpleGuinier&#39; object has no attribute &#39;guinier_start&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SimpleGuinier aborted due to 0 &lt;= 32
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">47</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No UV data found in </span><span class="si">%s</span><span class="s2">, skipping.&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="k">continue</span>
-<span class="ne">---&gt; </span><span class="mi">47</span> <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="n">reuslt</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">66</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="n">result1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">_egh.png&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span> <span class="n">result1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">66</span> <span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">sdm_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="n">result2</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">_sdm.png&quot;</span><span class="p">))</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\DataObjects\SecSaxsData.py:372,</span> in <span class="ni">SecSaxsData.trimmed_copy</span><span class="nt">(self, trimming, jranges, mapping)</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> <span class="k">if</span> <span class="n">trimming</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">372</span>     <span class="n">trimming</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_trimming</span><span class="p">(</span><span class="n">jranges</span><span class="o">=</span><span class="n">jranges</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>     <span class="k">assert</span> <span class="n">jranges</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;jranges must be None if trimming is specified.&quot;</span>
+<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\LowRank\Decomposition.py:408,</span> in <span class="ni">Decomposition.optimize_with_model</span><span class="nt">(self, model_name, model_params, debug)</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.SEC.ModelFactory</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">408</span> <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">optimize_decomposition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_params</span><span class="o">=</span><span class="n">model_params</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">)</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\DataObjects\SecSaxsData.py:268,</span> in <span class="ni">SecSaxsData.make_trimming</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.Trimming.TrimmingUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_trimming_impl</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="n">flowchange</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trimmed</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="ne">--&gt; </span><span class="mi">268</span> <span class="k">return</span> <span class="n">make_trimming_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flowchange</span><span class="o">=</span><span class="n">flowchange</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\SEC\Models\SDM.py:45,</span> in <span class="ni">SDM.optimize_decomposition</span><span class="nt">(self, decomposition, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.SEC.Models.SdmOptimizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize_sdm_xr_decomposition</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.SEC.Models.UvOptimizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize_uv_decomposition</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">env_params</span> <span class="o">=</span> <span class="n">estimate_sdm_column_params</span><span class="p">(</span><span class="n">decomposition</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">model_params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;model_params&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">new_xr_ccurves</span> <span class="o">=</span> <span class="n">optimize_sdm_xr_decomposition</span><span class="p">(</span><span class="n">decomposition</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">model_params</span><span class="o">=</span><span class="n">model_params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Trimming\TrimmingUtils.py:112,</span> in <span class="ni">make_trimming_impl</span><span class="nt">(ssd, xr_qr, xr_mt, uv_wr, uv_mt, uv_fc, flowchange, ip_effect_info, nsigmas, nguiniers, jranges, mapping, debug)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">xr_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="n">xr_mt</span> <span class="o">=</span> <span class="n">EghMoment</span><span class="p">(</span><span class="n">xr_icurve</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">112</span>     <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">xr_mt</span><span class="o">.</span><span class="n">get_nsigma_points</span><span class="p">(</span><span class="n">nsigmas</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="n">xr_jslice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="c1"># uv_slices</span>
+<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\SEC\Models\SdmEstimator.py:61,</span> in <span class="ni">estimate_sdm_column_params</span><span class="nt">(decomposition, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span> <span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">50000</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">300</span><span class="p">)]</span>
+<span class="ne">---&gt; </span><span class="mi">61</span> <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">objective_function</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Stats\Moment.py:144,</span> in <span class="ni">Moment.get_nsigma_points</span><span class="nt">(self, n)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_nsigma_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Get the indices of the x-values that are within n standard deviations from the mean.</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)    142         If no such points exist, returns (None, None).</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="n">M</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_meanstd</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="n">wanted_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">std</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">M</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="n">std</span><span class="p">)</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_minimize.py:784,</span> in <span class="ni">minimize</span><span class="nt">(fun, x0, args, method, jac, hess, hessp, bounds, constraints, tol, callback, options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_minimize_newtoncg</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">hessp</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">782</span>                              <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">783</span> <span class="k">elif</span> <span class="n">meth</span> <span class="o">==</span> <span class="s1">&#39;l-bfgs-b&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">784</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_minimize_lbfgsb</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>                            <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span> <span class="k">elif</span> <span class="n">meth</span> <span class="o">==</span> <span class="s1">&#39;tnc&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_minimize_tnc</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>                         <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Stats\Moment.py:108,</span> in <span class="ni">Moment.get_meanstd</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Get the mean and standard deviation of the distribution.</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">     If M and std are None, they will be computed using the processed y-values.</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd"> </span>
-<span class="sd">   (...)    105     The standard deviation of the distribution.</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">108</span>     <span class="n">y_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_y_</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">compute_meanstd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_lbfgsb_py.py:413,</span> in <span class="ni">_minimize_lbfgsb</span><span class="nt">(fun, x0, args, jac, bounds, disp, maxcor, ftol, gtol, eps, maxfun, maxiter, iprint, callback, maxls, finite_diff_rel_step, workers, **unknown_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span> <span class="c1"># _prepare_scalar_function can use bounds=None to represent no bounds</span>
+<span class="ne">--&gt; </span><span class="mi">413</span> <span class="n">sf</span> <span class="o">=</span> <span class="n">_prepare_scalar_function</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span>                               <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span>                               <span class="n">finite_diff_rel_step</span><span class="o">=</span><span class="n">finite_diff_rel_step</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span>                               <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span> <span class="n">func_and_grad</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">fun_and_grad</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span> <span class="n">nbd</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Stats\EghMoment.py:45,</span> in <span class="ni">EghMoment.get_y_</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Get the computed y values from the EGH decomposition.</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span><span class="sd"> Returns</span>
-<span class="sd">   (...)     42     The computed y values from the EGH decomposition.</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_egh_y</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_optimize.py:310,</span> in <span class="ni">_prepare_scalar_function</span><span class="nt">(fun, x0, jac, args, bounds, epsilon, finite_diff_rel_step, hess, workers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span> <span class="n">workers</span> <span class="o">=</span> <span class="n">workers</span> <span class="ow">or</span> <span class="nb">map</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="c1"># ScalarFunction caches. Reuse of fun(x) during grad</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span> <span class="c1"># calculation reduces overall function evaluations.</span>
+<span class="ne">--&gt; </span><span class="mi">310</span> <span class="n">sf</span> <span class="o">=</span> <span class="n">ScalarFunction</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>                     <span class="n">finite_diff_rel_step</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>                     <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span> <span class="k">return</span> <span class="n">sf</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Stats\EghMoment.py:58,</span> in <span class="ni">EghMoment.compute_egh_y</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="n">icurve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">icurve</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_peaks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="bp">self</span><span class="o">.</span><span class="n">num_peaks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">icurve</span><span class="o">.</span><span class="n">get_peaks</span><span class="p">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="bp">self</span><span class="o">.</span><span class="n">curves</span> <span class="o">=</span> <span class="n">decompose_icurve_impl</span><span class="p">(</span><span class="n">icurve</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_peaks</span><span class="p">)</span>   <span class="c1"># egh component</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">cy_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_differentiable_functions.py:274,</span> in <span class="ni">ScalarFunction.__init__</span><span class="nt">(self, fun, x0, args, grad, hess, finite_diff_rel_step, finite_diff_bounds, epsilon, workers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="c1"># Initial function evaluation</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nfev</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ne">--&gt; </span><span class="mi">274</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fun</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span> <span class="c1"># Initial gradient evaluation</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_grad</span> <span class="o">=</span> <span class="n">_ScalarGradWrapper</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>     <span class="n">grad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="n">fun</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_fun</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>     <span class="n">finite_diff_options</span><span class="o">=</span><span class="n">finite_diff_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="p">)</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\DataObjects\Curve.py:126,</span> in <span class="ni">Curve.get_peaks</span><span class="nt">(self, debug, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s1">&#39;i&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;get_peaks works only for i-curves&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">126</span>     <span class="bp">self</span><span class="o">.</span><span class="n">peaks</span> <span class="o">=</span> <span class="n">get_peak_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">peaks</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_differentiable_functions.py:353,</span> in <span class="ni">ScalarFunction._update_fun</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">def</span><span class="w"> </span><span class="nf">_update_fun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_updated</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">353</span>         <span class="n">fx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_nfev</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>         <span class="k">if</span> <span class="n">fx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lowest_f</span><span class="p">:</span>
 
-<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\Peaks\Recognizer.py:56,</span> in <span class="ni">get_peak_positions</span><span class="nt">(icurve, debug, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try find_peaks with fewer parameters.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>                           <span class="n">height</span><span class="o">=</span><span class="n">height</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>                           <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">peak_prominences</span>
+<span class="nn">File c:\Program Files\Python313\Lib\site-packages\scipy\_lib\_util.py:590,</span> in <span class="ni">_ScalarFunctionWrapper.__call__</span><span class="nt">(self, x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>     <span class="c1"># Send a copy because the user may overwrite it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>     <span class="c1"># The user of this class might want `x` to remain unchanged.</span>
+<span class="ne">--&gt; </span><span class="mi">590</span>     <span class="n">fx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="c1"># Make sure the function returns a true scalar</span>
 
-<span class="ne">AssertionError</span>: 
+<span class="nn">File c:\Users\takahashi\GitHub\molass-technical\chapters\50\../../../molass-library\molass\SEC\Models\SdmEstimator.py:41,</span> in <span class="ni">estimate_sdm_column_params.&lt;locals&gt;.objective_function</span><span class="nt">(params, return_moments)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">def</span><span class="w"> </span><span class="nf">objective_function</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">return_moments</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">poresize</span> <span class="o">=</span> <span class="n">params</span>
+<span class="ne">---&gt; </span><span class="mi">41</span>     <span class="n">rhov</span> <span class="o">=</span> <span class="n">rgv</span><span class="o">/</span><span class="n">poresize</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">rhov</span><span class="p">[</span><span class="n">rhov</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># limit rhov to 1.0</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">error</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;NoneType&#39; and &#39;float&#39;
 </pre></div>
 </div>
 </div>

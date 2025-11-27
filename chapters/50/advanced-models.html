@@ -210,6 +210,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">11.2. SEC Simulation</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../90/related_packages.html">12. Related Packages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../90/peak-performance.html">12.1. PeakPerformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/cadet-core.html">12.2. CADET Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/hplc-py.html">12.3. hplc-py</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -405,12 +411,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.1. Stochastic Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1.1. Stochastic Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-decomposition">8.1. Preliminary Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.2. Stochastic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.2.1. Stochastic Dispersive Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.2. Kinetic Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.2.1. Equilibrium Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.3. Kinetic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.3.1. Equilibrium Dispersive Model</a></li>
 </ul>
 </li>
 </ul>
@@ -426,16 +433,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-elution-models">
 <h1><span class="section-number">8. </span>Advanced Elution Models<a class="headerlink" href="#advanced-elution-models" title="Link to this heading">#</a></h1>
-<section id="stochastic-models">
-<h2><span class="section-number">8.1. </span>Stochastic Models<a class="headerlink" href="#stochastic-models" title="Link to this heading">#</a></h2>
-<section id="stochastic-dispersive-model">
-<h3><span class="section-number">8.1.1. </span>Stochastic Dispersive Model<a class="headerlink" href="#stochastic-dispersive-model" title="Link to this heading">#</a></h3>
+<section id="preliminary-decomposition">
+<h2><span class="section-number">8.1. </span>Preliminary Decomposition<a class="headerlink" href="#preliminary-decomposition" title="Link to this heading">#</a></h2>
+<p>Advanced models are usually harder to fit compared to EGH model which is the default. Therefore, we make it a rule to first decompose using EGH model and proceed to advanced models based on the first result. This rule is formalized in a coding rule as follows:</p>
+<ol class="arabic simple">
+<li><p>you have to use ssd.quick_decomposition() as the first step to make a decomosition object,</p></li>
+<li><p>then using the result, you can proceed to decomosition.optimize_with_model().</p></li>
+</ol>
+<p>This second step provides advanced models, which are eihther SDM or EDM.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.7.4&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.7.4 or higher.&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">molass_legacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.4&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_legacy version 0.2.4 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.4.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_legacy version 0.4.0 or higher.&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.3.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_data version 0.3.0 or higher.&quot;</span>
 
@@ -453,6 +464,11 @@ document.write(`
 <img alt="../../_images/9d6d5837efbda72d488bc5e6afcb72ed6897a826bce1af2b0805b16ecd9e432a.png" src="../../_images/9d6d5837efbda72d488bc5e6afcb72ed6897a826bce1af2b0805b16ecd9e432a.png" />
 </div>
 </div>
+</section>
+<section id="stochastic-models">
+<h2><span class="section-number">8.2. </span>Stochastic Models<a class="headerlink" href="#stochastic-models" title="Link to this heading">#</a></h2>
+<section id="stochastic-dispersive-model">
+<h3><span class="section-number">8.2.1. </span>Stochastic Dispersive Model<a class="headerlink" href="#stochastic-dispersive-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -461,15 +477,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/80aa885cca6d54bfe9651f7ee91b055fb2865a9df3cd1addc52a1d879a1f987a.png" src="../../_images/80aa885cca6d54bfe9651f7ee91b055fb2865a9df3cd1addc52a1d879a1f987a.png" />
+<img alt="../../_images/f83b7662bf3b75a457af248d882da528b1c034d16f8c15478e27d556b26f7a3b.png" src="../../_images/f83b7662bf3b75a457af248d882da528b1c034d16f8c15478e27d556b26f7a3b.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="kinetic-models">
-<h2><span class="section-number">8.2. </span>Kinetic Models<a class="headerlink" href="#kinetic-models" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>Kinetic Models<a class="headerlink" href="#kinetic-models" title="Link to this heading">#</a></h2>
 <section id="equilibrium-dispersive-model">
-<h3><span class="section-number">8.2.1. </span>Equilibrium Dispersive Model<a class="headerlink" href="#equilibrium-dispersive-model" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.1. </span>Equilibrium Dispersive Model<a class="headerlink" href="#equilibrium-dispersive-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;EDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -567,12 +583,13 @@ area ratio= 0.3521629344551637
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.1. Stochastic Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.1.1. Stochastic Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-decomposition">8.1. Preliminary Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-models">8.2. Stochastic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-dispersive-model">8.2.1. Stochastic Dispersive Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.2. Kinetic Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.2.1. Equilibrium Dispersive Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kinetic-models">8.3. Kinetic Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-dispersive-model">8.3.1. Equilibrium Dispersive Model</a></li>
 </ul>
 </li>
 </ul>

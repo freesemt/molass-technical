@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -208,6 +208,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">11. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">11.1. Simple Animation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">11.2. SEC Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../90/related_packages.html">12. Related Packages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../90/peak-performance.html">12.1. PeakPerformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/cadet-core.html">12.2. CADET Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/hplc-py.html">12.3. hplc-py</a></li>
 </ul>
 </details></li>
 </ul>
@@ -456,174 +462,7 @@ document.write(`
     <span class="n">reuslt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="c1"># break  # Uncomment to stop after processing a few files</span>
-        <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] C:\Users\takahashi\PyTools\Data\00_model_001
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\20\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
-    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\20\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 140, in get_limit_impl
-    if not is_limit or fmin &lt; safe_f:
-           ^^^^^^^^
-UnboundLocalError: cannot access local variable &#39;is_limit&#39; where it is not associated with a value
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] C:\Users\takahashi\PyTools\Data\00_model_005
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\20\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
-    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;C:\Users\takahashi\GitHub\molass-technical\chapters\20\../../../molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 140, in get_limit_impl
-    if not is_limit or fmin &lt; safe_f:
-           ^^^^^^^^
-UnboundLocalError: cannot access local variable &#39;is_limit&#39; where it is not associated with a value
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2] C:\Users\takahashi\PyTools\Data\20160227\backsub
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3] C:\Users\takahashi\PyTools\Data\20160628
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">27</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No UV data found in </span><span class="si">%s</span><span class="s2">, skipping.&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">continue</span>
-<span class="ne">---&gt; </span><span class="mi">27</span> <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">reuslt</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataObjects\SecSaxsData.py:372,</span> in <span class="ni">SecSaxsData.trimmed_copy</span><span class="nt">(self, trimming, jranges, mapping)</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> <span class="k">if</span> <span class="n">trimming</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">372</span>     <span class="n">trimming</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_trimming</span><span class="p">(</span><span class="n">jranges</span><span class="o">=</span><span class="n">jranges</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>     <span class="k">assert</span> <span class="n">jranges</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;jranges must be None if trimming is specified.&quot;</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataObjects\SecSaxsData.py:268,</span> in <span class="ni">SecSaxsData.make_trimming</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.Trimming.TrimmingUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_trimming_impl</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="n">flowchange</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trimmed</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="ne">--&gt; </span><span class="mi">268</span> <span class="k">return</span> <span class="n">make_trimming_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flowchange</span><span class="o">=</span><span class="n">flowchange</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\Trimming\TrimmingUtils.py:144,</span> in <span class="ni">make_trimming_impl</span><span class="nt">(ssd, xr_qr, xr_mt, uv_wr, uv_mt, uv_fc, flowchange, ip_effect_info, nsigmas, nguiniers, jranges, mapping, debug)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Determined flowchange=&quot;</span><span class="p">,</span> <span class="n">flowchange</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">if</span> <span class="n">flowchange</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">judge_info</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_flowchange_points</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">make_and_slicepair</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">judge_info</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\DataObjects\UvData.py:94,</span> in <span class="ni">UvData.get_flowchange_points</span><span class="nt">(self, pickvalues, return_also_curves)</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">curve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">(</span><span class="n">pickat</span><span class="o">=</span><span class="n">pickvalue</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">curves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">94</span> <span class="n">points</span><span class="p">,</span> <span class="n">judge_info</span> <span class="o">=</span> <span class="n">flowchange_exclude_slice</span><span class="p">(</span><span class="n">curves</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curves</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="k">if</span> <span class="n">return_also_curves</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">return</span> <span class="n">points</span><span class="p">,</span> <span class="n">judge_info</span><span class="p">,</span> <span class="n">curves</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\FlowChange\FlowChange.py:112,</span> in <span class="ni">flowchange_exclude_slice</span><span class="nt">(curve1, curve2, debug, return_fullinfo, counter, return_firstinfo)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="n">y2_temp</span> <span class="o">=</span> <span class="n">y2</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">yscale</span> <span class="o">=</span> <span class="n">compute_yscale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2_temp</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">112</span> <span class="n">points</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">rel_likes</span><span class="p">,</span> <span class="n">peaklike</span><span class="p">,</span> <span class="n">peakpos</span> <span class="o">=</span> <span class="n">flowchange_exclude_slice_impl</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2_temp</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">yscale</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="k">if</span> <span class="n">corrected</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">molass.Geometric.LinesegmentUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">restore_segments</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\FlowChange\FlowChange.py:32,</span> in <span class="ni">flowchange_exclude_slice_impl</span><span class="nt">(x, y, mi, yscale, debug)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span><span class="w"> </span><span class="nn">molass.Geometric.LinesegmentUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce_segments</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">num_bkpoints</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">points</span><span class="p">,</span> <span class="n">segments</span> <span class="o">=</span> <span class="n">get_segments</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_bkps</span><span class="o">=</span><span class="n">num_bkpoints</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">ret</span><span class="p">,</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">check_peaklike_segment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">segments</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-
-<span class="nn">File ~\GitHub\molass-technical\chapters\20\../../../molass-library\molass\Geometric\Linesegment.py:95,</span> in <span class="ni">get_segments</span><span class="nt">(x, y, breakpoints, n_bkps)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="k">if</span> <span class="n">breakpoints</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">algo</span> <span class="o">=</span> <span class="n">rpt</span><span class="o">.</span><span class="n">Dynp</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="n">breakpoints</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\ruptures\detection\dynp.py:137,</span> in <span class="ni">Dynp.predict</span><span class="nt">(self, n_bkps)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">sanity_check</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="n">n_samples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="n">n_bkps</span><span class="o">=</span><span class="n">n_bkps</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="n">jump</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">min_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="k">raise</span> <span class="n">BadSegmentationParameters</span>
-<span class="ne">--&gt; </span><span class="mi">137</span> <span class="n">partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_bkps</span><span class="p">)</span>
-<span class="nn">    138 bkps = sorted(e for s, e</span> in <span class="ni">partition.keys</span><span class="nt">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">return</span> <span class="n">bkps</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\ruptures\detection\dynp.py:85,</span> in <span class="ni">Dynp.seg</span><span class="nt">(self, start, end, n_bkps)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="n">sub_problems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">for</span> <span class="n">bkp</span> <span class="ow">in</span> <span class="n">admissible_bkps</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>     <span class="n">left_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">bkp</span><span class="p">,</span> <span class="n">n_bkps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>     <span class="n">right_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="n">tmp_partition</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">left_partition</span><span class="p">)</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\ruptures\detection\dynp.py:86,</span> in <span class="ni">Dynp.seg</span><span class="nt">(self, start, end, n_bkps)</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">for</span> <span class="n">bkp</span> <span class="ow">in</span> <span class="n">admissible_bkps</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span>     <span class="n">left_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">bkp</span><span class="p">,</span> <span class="n">n_bkps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">86</span>     <span class="n">right_partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="n">tmp_partition</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">left_partition</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="n">tmp_partition</span><span class="p">[(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span> <span class="o">=</span> <span class="n">right_partition</span><span class="p">[(</span><span class="n">bkp</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\ruptures\detection\dynp.py:56,</span> in <span class="ni">Dynp.seg</span><span class="nt">(self, start, end, n_bkps)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">jump</span><span class="p">,</span> <span class="n">min_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">if</span> <span class="n">n_bkps</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">return</span> <span class="p">{(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span> <span class="n">cost</span><span class="p">}</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">elif</span> <span class="n">n_bkps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="c1"># Let&#39;s fill the list of admissible last breakpoints</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\ruptures\costs\costl1.py:50,</span> in <span class="ni">CostL1.error</span><span class="nt">(self, start, end)</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">raise</span> <span class="n">NotEnoughPoints</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
-<span class="ne">---&gt; </span><span class="mi">50</span> <span class="n">med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sub</span> <span class="o">-</span> <span class="n">med</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:4021,</span> in <span class="ni">median</span><span class="nt">(a, axis, out, overwrite_input, keepdims)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3936</span> <span class="nd">@array_function_dispatch</span><span class="p">(</span><span class="n">_median_dispatcher</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3937</span> <span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite_input</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3938</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3939</span><span class="sd">     Compute the median along the specified axis.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3940</span><span class="sd"> </span>
-<span class="sd">   (...)   4019 </span>
-<span class="g g-Whitespace">   </span><span class="mi">4020</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">4021</span>     <span class="k">return</span> <span class="n">_ureduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">_median</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="n">keepdims</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">4022</span>                     <span class="n">overwrite_input</span><span class="o">=</span><span class="n">overwrite_input</span><span class="p">)</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:3914,</span> in <span class="ni">_ureduce</span><span class="nt">(a, func, keepdims, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3911</span>     <span class="n">index_out</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">)</span> <span class="o">*</span> <span class="n">nd</span>
-<span class="g g-Whitespace">   </span><span class="mi">3912</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[(</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="p">)</span> <span class="o">+</span> <span class="n">index_out</span><span class="p">]</span>
-<span class="ne">-&gt; </span><span class="mi">3914</span> <span class="n">r</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3916</span> <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3917</span>     <span class="k">return</span> <span class="n">out</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:4054,</span> in <span class="ni">_median</span><span class="nt">(a, axis, out, overwrite_input)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4052</span>         <span class="n">part</span> <span class="o">=</span> <span class="n">a</span>
-<span class="g g-Whitespace">   </span><span class="mi">4053</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">4054</span>     <span class="n">part</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">kth</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4056</span> <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">():</span>
-<span class="g g-Whitespace">   </span><span class="mi">4057</span>     <span class="c1"># make 0-D arrays work</span>
-<span class="g g-Whitespace">   </span><span class="mi">4058</span>     <span class="k">return</span> <span class="n">part</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-
-<span class="nn">File C:\Program Files\Python313\Lib\site-packages\numpy\_core\fromnumeric.py:867,</span> in <span class="ni">partition</span><span class="nt">(a, kth, axis, kind, order)</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">asanyarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">867</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">kth</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">return</span> <span class="n">a</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+        <span class="k">break</span>  <span class="c1"># Uncomment to stop after processing a few files</span>
 </pre></div>
 </div>
 </div>

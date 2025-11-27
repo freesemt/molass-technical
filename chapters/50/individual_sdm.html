@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Robustness Survey &#8212; Molass Technical Report</title>
+    <title>Individual SDM &#8212; Molass Technical Report</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -208,6 +208,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">11. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">11.1. Simple Animation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">11.2. SEC Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../90/related_packages.html">12. Related Packages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../90/peak-performance.html">12.1. PeakPerformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/cadet-core.html">12.2. CADET Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../90/hplc-py.html">12.3. hplc-py</a></li>
 </ul>
 </details></li>
 </ul>
@@ -395,7 +401,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Robustness Survey</h1>
+    <h1>Individual SDM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -417,8 +423,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="robustness-survey">
-<h1>Robustness Survey<a class="headerlink" href="#robustness-survey" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="individual-sdm">
+<h1>Individual SDM<a class="headerlink" href="#individual-sdm" title="Link to this heading">#</a></h1>
 <section id="id1">
 <h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -438,48 +444,50 @@ document.write(`
 <span class="n">DATA_ROOT_FOLDER</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;DATA_ROOT_FOLDER&#39;</span><span class="p">]</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 
-<span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;figs&quot;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_folder</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">egh_decompose</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_ROOT_FOLDER</span><span class="p">,</span> <span class="s2">&quot;20161104&quot;</span><span class="p">,</span> <span class="s2">&quot;BL-10C&quot;</span><span class="p">,</span> <span class="s2">&quot;Ald&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+    <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+    <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decomposition</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\takahashi\PyTools\Data\20161104\BL-10C\Ald
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1d6df75c690&gt;
-</pre></div>
-</div>
-<img alt="../../_images/02a2c6066fec9919f54e927a16006b169e5adc8062330bcb5dbe793033505b41.png" src="../../_images/02a2c6066fec9919f54e927a16006b169e5adc8062330bcb5dbe793033505b41.png" />
-<img alt="../../_images/89c1788c5db3c5884600a06fe3b1c82b17cb8217b3356fc473f26accb8768bd6.png" src="../../_images/89c1788c5db3c5884600a06fe3b1c82b17cb8217b3356fc473f26accb8768bd6.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">,</span> <span class="n">model_params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">timescale</span><span class="o">=</span><span class="mi">70</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_ROOT_FOLDER</span><span class="p">,</span> <span class="s2">&quot;20161104&quot;</span><span class="p">,</span> <span class="s2">&quot;BL-10C&quot;</span><span class="p">,</span> <span class="s2">&quot;Ald&quot;</span><span class="p">)</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">egh_decompose</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">)</span>
 <span class="n">sdm_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 0.6102249259024266
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_ROOT_FOLDER</span><span class="p">,</span> <span class="s2">&quot;20171112&quot;</span><span class="p">,</span> <span class="s2">&quot;Backsub_ComMR&quot;</span><span class="p">)</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">egh_decompose</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1d6df2c0410&gt;
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sdm_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/01725c5ce5d2a49934e46c66471dbb47fd0a077738765e6610b9af0fbe5b40a5.png" src="../../_images/01725c5ce5d2a49934e46c66471dbb47fd0a077738765e6610b9af0fbe5b40a5.png" />
 </div>
 </div>
 </section>
