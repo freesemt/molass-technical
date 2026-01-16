@@ -29,6 +29,17 @@ chapters:
     title: Plate Number Constraints
 - file: chapters/50/advanced-models
   title: Advanced Elution Models
+- file: chapters/60/rigorous
+  title: Rigorous Optimization
+  sections:
+  - file: chapters/60/optimization_strategy
+    title: Omptimization Strategy
+  - file: chapters/60/rigorous_egh
+    title: EGH Optimization
+  - file: chapters/60/rigorous_sdm
+    title: SDM Optimization
+  - file: chapters/60/rigorous_edm
+    title: EDM Optimization            
 - file: chapters/70/data_survey
   title: Data Survey and Robustness Testing
   sections:
