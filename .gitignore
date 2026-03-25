@@ -21,3 +21,5 @@ local_settings.py
 *.csv
 *.npy
 *.xlsx
+# VS Code version (auto-updated by vscode-version-recorder extension)
+.github/vscode-version.txt
