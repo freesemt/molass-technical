@@ -45,6 +45,12 @@ Output goes to `_build/html/`.
 
 ---
 
+## Response language
+
+**Response language**: English
+
+---
+
 ## 🔄 Updates
 
 **Latest**: March 25, 2026 — Created `.github/copilot-instructions.md` (AI Context Standard v0.8)
